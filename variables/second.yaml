@@ -1,3 +1,16 @@
 - name: Second variable
   hosts: local
   connection: local
+  vars:
+    NAME: satyology
+    AGE: 25
+  tasks:
+    - name: FIRST
+      ansible.builtin.debug:
+        msg: "my name is {{ NAME }} and age is {{ AGE }}"
+
+    - name: SECOND
+      vars:
+        NAME: SATYA VARDHAN
+      ansible.builtin.debug:
+        msg: "my name is {{ NAME }} and age is {{ AGE }}"
