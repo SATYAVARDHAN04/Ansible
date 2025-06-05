@@ -1,4 +1,4 @@
-# args .. variable
+# args .. variable command : ansible-playbook -i inventory.ini 6sixth.yaml -e "NAME=SATYAVARDHAN AGE=92"
 - name: FROM ARGUMENTS
   hosts: local
   connection: local
