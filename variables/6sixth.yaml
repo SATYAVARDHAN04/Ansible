@@ -1,0 +1,8 @@
+# args .. variable
+- name: FROM ARGUMENTS
+  hosts: local
+  connection: local
+  tasks:
+    - name: NEW VARIABLE
+      ansible.builtin.debug:
+        msg: "MY name is {{ NAME }} and age is {{ AGE }}"
