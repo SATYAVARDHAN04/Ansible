@@ -1,0 +1,9 @@
+#writing in file satya.yaml
+- name: WRITING FROM FILE
+  hosts: local
+  connection: local
+  vars_file: satya.yaml
+  tasks:
+    - name: new yaml variables
+      ansible.builtin.debug:
+        msg: "MY NAME IS {{ NAME }} and AGE is {{ AGE }}"
