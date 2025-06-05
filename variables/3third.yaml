@@ -2,7 +2,7 @@
 - name: WRITING FROM FILE
   hosts: local
   connection: local
-  vars_file: satya.yaml
+  vars_files: satya.yaml
   tasks:
     - name: new yaml variables
       ansible.builtin.debug:
