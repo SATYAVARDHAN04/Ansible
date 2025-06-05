@@ -1,0 +1,10 @@
+- name: Variable declarations
+  hosts: local
+  connections: local
+  vars:
+    NAME: SATYOLOGY
+    AGE: 20
+  tasks:
+    - name: Writing variables
+      ansible.builtin.debug:
+        msg: "MY name is {{ NAME }} and my age is {{ AGE }}"
