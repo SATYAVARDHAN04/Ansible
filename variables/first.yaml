@@ -8,3 +8,7 @@
     - name: Writing variables
       ansible.builtin.debug:
         msg: "MY name is {{ NAME }} and my age is {{ AGE }}"
+
+    - name: Writing variables
+      ansible.builtin.debug:
+        msg: "MY name is {{ NAME }} and my age is {{ AGE }}"
