@@ -1,0 +1,16 @@
+- name: USER input
+  hosts: local
+  connection: local
+  vars_prompt:
+    - name: NAME
+      prompt: Enter your name
+      private: false
+
+    - name: AGE
+      prompt: Enter your age
+      private: false
+
+  tasks:
+    - name: your data
+      ansible.builtin.debug:
+        msg: "your name is {{ NAME }} and age {{ AGE }}"
