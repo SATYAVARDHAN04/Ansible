@@ -1,6 +1,6 @@
 - name: Variable declarations
   hosts: local
-  connections: local
+  connection: local
   vars:
     NAME: SATYOLOGY
     AGE: 20
