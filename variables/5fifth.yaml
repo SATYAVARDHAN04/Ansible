@@ -1,0 +1,9 @@
+#from inventory...
+
+- name: FROM INVENTORY
+  hosts: local
+  connection: local
+  tasks:
+    name: Printing Variables
+    ansible.builtin.debug:
+      msg: "my name is {{ NAME }} and age is {{ AGE }}"
