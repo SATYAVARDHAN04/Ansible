@@ -2,9 +2,9 @@
   hosts: frontend
   become: yes
   tasks:
-    - name: nginx
+    - name: satyology
       ansible.builtin.package:
-        name: nginx
+        name: satyology
         state: present
 
     - name: start nginx
