@@ -1,0 +1,7 @@
+- name: Printing HelloWorld
+  hosts: local
+  connection: local
+  tasks:
+    - name: hello
+      ansible.builtin.debug:
+        msg: "Hello Satyology"
