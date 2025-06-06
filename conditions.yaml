@@ -1,0 +1,20 @@
+- name: CONDITIONS - If/Elif/Else Style Logic
+  hosts: localhost
+  connection: local
+  vars:
+    num: 20
+  tasks:
+    - name: If num > 100
+      ansible.builtin.debug:
+        msg: "yes greater than 100"
+      when: num > 100
+
+    - name: Elif num < 100
+      ansible.builtin.debug:
+        msg: "no less than 100"
+      when: num < 100 and (num > 100 is not matched)
+
+    - name: Else (num == 100)
+      ansible.builtin.debug:
+        msg: "number is exactly 100"
+      when: num == 100
