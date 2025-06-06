@@ -1,0 +1,17 @@
+- name: DATATYPES
+  hosts: local
+  connection: local
+  tasks:
+    - name: datatypes representation
+      vars:
+        skills:
+          - linux
+          - shell
+          - ansible
+        concepts:
+          configuration: ansible
+          cicd: jenikens
+          SCRIPTING: "Shell, Ansible, Terraform, Python"
+        satya: ~
+      ansible.builtin.debug:
+        mag: "he has {{ skills }} and {{ concepts }} and his name is {{ satya }}"
