@@ -1,0 +1,14 @@
+- name: INSTALLATION OF NGINX
+  hosts: frontend
+  tasks:
+    - name: nginxx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: nginx2
+      ansible.builtin.sudo:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
