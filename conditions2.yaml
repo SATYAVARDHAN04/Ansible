@@ -8,7 +8,7 @@
       when: ansible_os_family == "RedHat"
 
     - name: nginx2
-      ansible.builtin.sudo:
+      ansible.builtin.apt:
         name: nginx
         state: present
       when: ansible_os_family == "Debian"
