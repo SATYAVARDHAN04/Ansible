@@ -1,10 +1,10 @@
 - name: Dict
-  hosts: local
+  hosts: localhost
   connection: local
   tasks:
     - name: DICTIONARY
       ansible.builtin.debug:
-        msg "{{ item.key }} and {{ item.value }}"
+        msg: "{{ item.key }} and {{ item.value }}"
       loop:
-        {key: name, value: satyology}
-        {key: age, value: 20}
+        - { key: name, value: satyology }
+        - { key: age, value: 20 }
