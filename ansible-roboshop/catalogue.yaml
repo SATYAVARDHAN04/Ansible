@@ -1,0 +1,68 @@
+- name: SETTING UP CATALOGUE
+  become: true
+  hosts: catalogue
+
+  tasks:
+    - name: Disable existing NodeJS module
+      ansible.builtin.dnf:
+        name: "@nodejs"
+        state: absent
+      ignore_errors: true
+
+    - name: Enable NodeJS 20 module
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+
+    - name: Install NodeJS
+      ansible.builtin.dnf:
+        name: nodejs
+        state: present
+
+    - name: Add application user
+      ansible.builtin.user:
+        name: roboshop
+        shell: /sbin/nologin
+
+    - name: Create App Directory
+      ansible.builtin.file:
+        path: /app
+        state: directory
+
+    - name: Download Application Code
+      ansible.builtin.get_url:
+        url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+        dest: /tmp/catalogue.zip
+
+    - name: Extract Application Code
+      ansible.builtin.unarchive:
+        src: /tmp/catalogue.zip
+        dest: /app
+        remote_src: yes
+
+    - name: Install NodeJS Dependencies
+      community.general.npm:
+        path: /app
+
+    - name: Copy Catalogue Service File
+      ansible.builtin.copy:
+        src: catalogue.service
+        dest: /etc/systemd/system/catalogue.service
+
+    - name: Reload Systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Start and Enable Catalogue Service
+      ansible.builtin.service:
+        name: catalogue
+        state: started
+        enabled: yes
+
+    - name: Install MongoDB Shell Client
+      ansible.builtin.dnf:
+        name: mongodb-mongosh
+        state: present
+
+    - name: Load Catalogue Schema into MongoDB
+      ansible.builtin.shell: mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js
+      args:
+        executable: /bin/bash
