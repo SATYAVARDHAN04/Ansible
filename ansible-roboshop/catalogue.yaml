@@ -63,6 +63,6 @@
         state: present
 
     - name: Load Catalogue Schema into MongoDB
-      ansible.builtin.shell: mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js
+      ansible.builtin.shell: mongosh --host 172.31.95.221 </app/db/master-data.js
       args:
         executable: /bin/bash
